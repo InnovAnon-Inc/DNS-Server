@@ -23,7 +23,9 @@ def handle_dns_query(conn, data, upstream_server, upstream_port):
     if not res:
       a = request.send(upstream_server, upstream_port, tcp=False, timeout=10)
       return a
-    res = res[3]
+    res = res[2]
+    # TODO
+    #res = res[3]
     print(f'res: {res}')
     if not res:
       a = request.send(upstream_server, upstream_port, tcp=False, timeout=10)
