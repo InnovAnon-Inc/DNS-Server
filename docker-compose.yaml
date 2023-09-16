@@ -4,7 +4,7 @@ services:
     image: innovanon/teamhack_dns
     container_name:  teamhack_dns
     ports:
-      - "0.0.0.0:5353:53/udp"
+      - "0.0.0.0:53:53/udp"
     volumes:
       - teamhack-dns:/var/teamhack/etc:ro
       - syslog-client:/etc/rsyslog.d:ro
