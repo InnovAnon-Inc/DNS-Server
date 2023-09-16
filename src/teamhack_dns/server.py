@@ -57,7 +57,9 @@ def start_server(conn, host='', port=53, upstream_server='8.8.8.8', upstream_por
     print(f'DNS server listening on port {port}... \n \n' )
 
     while True:
+      try:
         data, address = server_socket.recvfrom(1024)
         response = handle_dns_query(conn, data, upstream_server, upstream_port)
         server_socket.sendto(response, address)
+      except: pass
 
