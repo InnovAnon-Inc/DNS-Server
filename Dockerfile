@@ -10,7 +10,7 @@ FROM python:latest
 RUN pip install teamhack_dns
 
 WORKDIR  /var/teamhack
-VOLUME ["/var/teamhack"]
+VOLUME ["/var/teamhack/etc"]
 
 ENTRYPOINT [         \
   "/usr/bin/env",    \
