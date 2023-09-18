@@ -19,20 +19,21 @@ def handle_dns_query(conn, data, upstream_server, upstream_port):
 
     print(f'A qname: {qname}, qtype: {qtype}')
     res = select_hostname_recordtype(conn, qname, qtype)
-    print(f'B res: {res}')
+    print(f'B res {type(res)}: {res}')
+    #assert res isinstance list
     if not res:
       a = request.send(upstream_server, upstream_port, tcp=False, timeout=10)
       return a
     res = res[0]
-    print(f'C res: {res}')
+    print(f'C res {type(res)}: {res}')
+    #assert res isinstance tuple
     if not res:
       a = request.send(upstream_server, upstream_port, tcp=False, timeout=10)
       return a
 
-    res = res[2]
-    # TODO
-    #res = res[3]
-    print(f'D res: {res}')
+    res = res[3]
+    print(f'D res {type(res)}: {res}')
+    #assert res isinstance str
     if not res:
       a = request.send(upstream_server, upstream_port, tcp=False, timeout=10)
       return a
