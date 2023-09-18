@@ -17,14 +17,14 @@ def handle_dns_query(conn, data, upstream_server, upstream_port):
     #  request.add_answer(a)
     #  return request.pack()
 
-    print(f'qname: {qname}, qtype: {qtype}')
+    print(f'A qname: {qname}, qtype: {qtype}')
     res = select_hostname_recordtype(conn, qname, qtype)
-    print(f'res: {res}')
+    print(f'B res: {res}')
     if not res:
       a = request.send(upstream_server, upstream_port, tcp=False, timeout=10)
       return a
     res = res[0]
-    print(f'res: {res}')
+    print(f'C res: {res}')
     if not res:
       a = request.send(upstream_server, upstream_port, tcp=False, timeout=10)
       return a
@@ -32,7 +32,7 @@ def handle_dns_query(conn, data, upstream_server, upstream_port):
     res = res[2]
     # TODO
     #res = res[3]
-    print(f'res: {res}')
+    print(f'D res: {res}')
     if not res:
       a = request.send(upstream_server, upstream_port, tcp=False, timeout=10)
       return a
@@ -40,7 +40,7 @@ def handle_dns_query(conn, data, upstream_server, upstream_port):
     #if not res:
     #  a = request.send(upstream_server, upstream_port, tcp=False, timeout=10)
     #  return a
-    print(f'qname: {qname}, qtype: {qtype}, res: {res}')
+    print(f'E qname: {qname}, qtype: {qtype}, res: {res}')
 
     #if qname in dns_records and qtype in dns_records[qname]:
     #if res:
